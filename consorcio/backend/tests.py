@@ -6,11 +6,9 @@ Replace this with more appropriate tests for your application.
 """
 
 from django.test import TestCase
+from models import Departamento
 
-
-class SimpleTest(TestCase):
-    def test_basic_addition(self):
-        """
-        Tests that 1 + 1 always equals 2.
-        """
-        self.assertEqual(1 + 1, 2)
+class TestXXXX(TestCase):
+    def test_un_departamento_tiene_un_identificador_y_su_representacion_es_dicho_identificador(self):
+        departamento = Departamento(identificador="1 b")
+        self.assertEqual("1 b", str(departamento))
