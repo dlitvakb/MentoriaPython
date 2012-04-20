@@ -15,10 +15,11 @@ como el administrador del consorcio quiero poder dar de alta nuevos departamento
 
 - Edificio
 	- Tiene que tener una Direccion
-	- Tiene que una cantidad de Ascensores
 	- Tiene que tener un metraje común
-	- Tiene que tener Servicios Comunes
-	- Tiene que tener Ammenities
+    * Futuro:
+      - Tiene que una cantidad de Ascensores
+      - Tiene que tener Servicios Comunes
+      - Tiene que tener Ammenities
 
 como el administrador del consorcio quiero poder dar de alta nuevos proveedores
 

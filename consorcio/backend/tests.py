@@ -8,6 +8,7 @@ Replace this with more appropriate tests for your application.
 from django.test import TestCase
 from models import Departamento, Propietario, Edificio
 from django.core.exceptions import ValidationError
+from django.db import IntegrityError
 
 class TestDepartamento(TestCase):
     def test_un_departamento_tiene_un_identificador_y_su_representacion_es_dicho_identificador(self):
@@ -43,7 +44,9 @@ class TestDepartamento(TestCase):
                          metraje=25,
                          propietario=propietario,
                         )
-        departamento.edificio = 1
+        edificio = Edificio(direccion="santa fe", numero=3433)
+        edificio.save()
+        departamento.edificio = edificio
         departamento.save()
         # si llego hasta aca es que valido
 
@@ -67,8 +70,8 @@ class TestDepartamento(TestCase):
                          propietario=propietario,
                         )
         edificio = Edificio(direccion="santa fe", numero=3433)
-        edificio.departamentos.append(departamento)
         edificio.save()
+        edificio.departamentos.add(departamento)
         departamento.edificio = edificio
         departamento.save()
 
@@ -90,6 +93,14 @@ class TestEdificio(TestCase):
         with self.assertRaises(Exception):
             edificio.save()
 
+    def test_un_edificio_puedo_devolver_deptos_de_forma_bonita(self):
+        edificio = Edificio(direccion="santa fe", numero=3433)
+
+        try:
+            edificio.departamentos.all()
+        except AttributeError:
+            self.fail('no tiene la propiedad departamentos')
+
     def test_un_edificio_puede_tener_departamentos(self):
         propietario = Propietario(nombre="Pepe Morales", dni=35227937)
         propietario.save()
@@ -99,10 +110,27 @@ class TestEdificio(TestCase):
                          propietario=propietario,
                         )
         edificio = Edificio(direccion="santa fe", numero=3433)
-        edificio.departamentos.append(departamento)
         edificio.save()
         departamento.edificio = edificio
         departamento.save()
-        self.assertTrue(departamento in departamento.edificio.departamentos)
+        self.assertTrue(departamento in departamento.edificio.departamentos.all())
 
 
+class TestPropietario(TestCase):
+
+    def test_el_propietario_tiene_un_dni_valido (self):
+        propietario = Propietario(nombre="Pepe Morales", dni=35227937)
+        propietario.save()
+        #si llega hasta aca esta todo ok
+
+        propietario = Propietario(nombre="Pepe Morales", dni=-400)
+        with self.assertRaises(ValidationError):
+            propietario.save()
+
+    def test_la_primary_key_de_un_propietario_deberia_ser_el_dni(self):
+        propietario = Propietario(nombre="Pepe Morales", dni=35227937)
+        propietario.save()
+
+        propietario = Propietario(nombre="Pepe Morales", dni=35227937)
+        with self.assertRaises(IntegrityError):
+            propietario.save()
