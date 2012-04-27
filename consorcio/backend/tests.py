@@ -12,8 +12,15 @@ from django.db import IntegrityError
 
 class TestDepartamento(TestCase):
     def test_un_departamento_tiene_un_identificador_y_su_representacion_es_dicho_identificador(self):
-        departamento = Departamento(identificador="1 b")
-        self.assertEqual("1 b", str(departamento))
+        departamento = Departamento(identificador="1 b", metraje=50,
+                         propietario=Propietario(
+                           nombre="Pepe Morales",
+                           dni=35227937
+                         ))
+        edificio = Edificio(direccion="santa fe", numero=3433)
+        edificio.save()
+        edificio.departamentos.add(departamento)
+        self.assertEqual("santa fe 3433 - 1 b", str(departamento))
 
     def test_un_departamento_tiene_metraje(self):
         departamento = Departamento(metraje=25)
