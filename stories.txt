@@ -1,4 +1,28 @@
 como el administrador del consorcio quiero poder dar de alta nuevos departamentos
+- Edificio:
+	- Tiene que tener un metraje común
+    * Futuro:
+      - Tiene que una cantidad de Ascensores
+      - Tiene que tener Servicios Comunes
+      - Tiene que tener Ammenities
+
+como el administrador del consorcio quiero poder dar de alta nuevos proveedores
+
+como el administrador del consorcio quiero poder cargar los gastos fijos y eventuales para que se genere la liquidacion
+
+como el administrador del consorcio quiero poder distribuir la liquidación entre los propietarios para que reciban la misma.
+
+como el administrador del consorcio quiero poder llevar un control de los pagos de propietarios.
+
+como propietario de departamento quiero poder visualizar la liquidación de expensas para poder efectuar el pago o algun reclamo.
+
+como propietario de departamento quiero poder visualizar los comprobantes de gastos.
+- Apreto un boton ver gastos edificio:
+  - Ver detalle de gastos del edificio
+
+
+--------------
+YA ESTAN LISTAS
 - Tiene que haber Departamentos
 	- Tengo que poder crear Departamentos
 	- Tiene que haber una interfaz para crear Departamentos
@@ -15,43 +39,3 @@ como el administrador del consorcio quiero poder dar de alta nuevos departamento
 
 - Edificio
 	- Tiene que tener una Direccion
-	- Tiene que tener un metraje común
-    * Futuro:
-      - Tiene que una cantidad de Ascensores
-      - Tiene que tener Servicios Comunes
-      - Tiene que tener Ammenities
-
-como el administrador del consorcio quiero poder dar de alta nuevos proveedores
-
-
-
-
-
-
-
-como el administrador del consorcio quiero poder cargar los gastos fijos y eventuales para que se genere la liquidacion
-
-
-
-
-
-como el administrador del consorcio quiero poder distribuir la liquidación entre los propietarios para que reciban la misma.
-
-
-
-
-
-como el administrador del consorcio quiero poder llevar un control de los pagos de propietarios.
-
-
-
-
-
-como propietario de departamento quiero poder visualizar la liquidación de expensas para poder efectuar el pago o algun reclamo.
-
-
-
-
-
-
-como propietario de departamento quiero poder visualizar los comprobantes de gastos.
